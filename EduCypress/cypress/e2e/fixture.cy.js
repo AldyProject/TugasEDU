@@ -1,6 +1,6 @@
 describe('Working with inputs', () => {
     it('Successfull login and checkout', () => {
-          cy.visit("https://www.saucedemo.com/" , { timeout: 120000, waitForAnimations: true });
+          cy.visit("https://www.saucedemo.com/" , { timeout: 120000, waitForAnimations: false });
               cy.fixture("admin").then( admin => {
                 const username1 = admin.username1
                 const password1 = admin.password1
