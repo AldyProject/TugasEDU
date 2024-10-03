@@ -4,7 +4,6 @@ describe('Working with inputs', () => {
               cy.fixture("admin").then( admin => {
                 const username1 = admin.username1
                 const password1 = admin.password1
-                //cy.login(username, password)
                 const FName1 = admin.FName1
                 const LName1 = admin.LName1
                 const Zip1 = admin.Zip1
@@ -23,8 +22,6 @@ describe('Working with inputs', () => {
 
              // Click cart
              cy.get('[data-test="shopping-cart-link"]').click()
-                // Verifikasi item ditambahkan ke keranjang
-            //cy.get(".shopping_cart_badge").should("have.text", "2");
                //Click button countinue
                 cy.get('#checkout.btn.btn_action.btn_medium.checkout_button').click()
 
