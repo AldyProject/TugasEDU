@@ -1,50 +1,51 @@
 describe('Working with inputs', () => {
     it('Successfull login and checkout', () => {
-        cy.visit('https://saucedemo.com/');
-              cy.fixture("user").then( user1 => {
-                const username = user1.username
-                const password = user1.password
+          cy.visit("https://www.saucedemo.com/" , { timeout: 120000, waitForAnimations: true });
+              cy.fixture("admin").then( admin => {
+                const username1 = admin.username1
+                const password1 = admin.password1
                 //cy.login(username, password)
-                const FName = user1.FName
-                const LName = user1.LName
-                const Zip = user1.Zip
+                const FName1 = admin.FName1
+                const LName1 = admin.LName1
+                const Zip1 = admin.Zip1
                 //input username
                 cy.get('#user-name.input_error.form_input').clear()
-                cy.get('#user-name.input_error.form_input').type(username)
+                cy.get('#user-name.input_error.form_input').type(username1)
                 //input password
                 cy.get('#password.input_error.form_input').clear()
-                cy.get('#password.input_error.form_input').type(password)
+                cy.get('#password.input_error.form_input').type(password1)
                 //Click login
                 cy.get('#login-button.submit-button.btn_action').click()  
                 
                 //Click add to cart
-                cy.get('#add-to-cart-sauce-labs-backpack.btn.btn_primary.btn_small.btn_inventory').click()
-                cy.get('#add-to-cart-sauce-labs-light.btn.btn_primary.btn_small.btn_inventory').click()
+                cy.get('#add-to-cart-sauce-labs-backpack').click()
+                cy.get('#add-to-cart-sauce-labs-bike-light').click()
 
              // Click cart
-                cy.get('shopping_cart_link').click()
-
+             cy.get('[data-test="shopping-cart-link"]').click()
+                // Verifikasi item ditambahkan ke keranjang
+            //cy.get(".shopping_cart_badge").should("have.text", "2");
                //Click button countinue
                 cy.get('#checkout.btn.btn_action.btn_medium.checkout_button').click()
 
                //Input Firstname, Lastname and Zip/postal
                //input Firstname
-                cy.get('#first-name.input_error.form_input').clear()
-                cy.get('#first-name.input_error.form_input').type(FName)
+               cy.get('[data-test="firstName"]').clear()
+               cy.get('[data-test="firstName"]').type(FName1)
 
                 //input LastName
-                cy.get('#last-name.input_error.form_input').clear()
-                cy.get('#last-name.input_error.form_input').type(LName)
+                cy.get('[data-test="lastName"]').clear()
+                cy.get('[data-test="lastName"]').type(LName1)
 
                 //input Zip/postal
-                cy.get('#postal-code.input_error.form_input').clear()
-                cy.get('#postal-code.input_error.form_input').type(Zip)
+                cy.get('[data-test="postalCode"]').clear()
+                cy.get('[data-test="postalCode"]').type(Zip1)
 
                 //Click continue
                 cy.get('#continue.submit-button.btn.btn_primary.cart_button.btn_action').click()
 
                 //Click Finish
-                cy.get('#finish.btn.btn_action.btn_medium.cart_button').click()
+                cy.get('[data-test="finish"]').click()
 
                 //Click Back Home
                 cy.get('#back-to-products.btn.btn_primary.btn_small').click()
