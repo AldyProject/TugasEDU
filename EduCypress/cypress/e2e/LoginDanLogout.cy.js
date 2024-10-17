@@ -6,6 +6,13 @@ describe('Working login and logout', () => {
     it('Should visit website', () => {
         cy.visit('http://zero.webappsecurity.com/login.html');
       });
+    //Failed Login
+    it('Should Failed Login', () => {
+      cy.get('#user_login').type('invalid.username'); 
+      cy.get('#user_password').type('invalid.password');
+      cy.get('#user_remember_me').click();
+      cy.get('.btn.btn-primary').click();
+    });
     //Login successfully
     it('Should successfully log in', () => {
       cy.get('#user_login').type('username'); 
