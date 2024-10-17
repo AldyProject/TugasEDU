@@ -8,10 +8,12 @@ describe('Working login and logout', () => {
       });
     //Failed Login
     it('Should Failed Login', () => {
+      cy.get('#login_form').should('be.visible');
       cy.get('#user_login').type('invalid.username'); 
       cy.get('#user_password').type('invalid.password');
       cy.get('#user_remember_me').click();
       cy.get('.btn.btn-primary').click();
+      cy.get('.alert-error').should('be.visible').and('cointain.text','Login and/or password are wrong.');
     });
     //Login successfully
     it('Should successfully log in', () => {
